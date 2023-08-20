@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="createBucket">Create a bucket</button>
+
+    <button onclick="upload_file">Upload a file</button>
+
+    <p class="msg"></p>
+
+    <script>
+      function createBucket() {
+        let url = 'http://13.233.200.172/cgi-bin/s3.py';
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send();
+        xhr.onload = function () {
+          console.log(this.responseText);
+          document.querySelector('.msg').innerHTML = this.responseText;
+        };
+      }
+
+      function upload_file() {
+        let url = 'http://13.233.200.172/cgi-bin/upload.py';
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send();
+        xhr.onload = function () {
+          console.log(this.responseText);
+          document.querySelector('.msg').innerHTML = this.responseText;
+        };
+      }
+    </script>
+  </body>
+</html>
